@@ -46,9 +46,9 @@ pipeline {
         }
 	stage('Docker Container Deployment') {
             steps {
-                sh "docker rm $CONTAINER_NAME -f"
-		sh "docker pull $DOCKER_HUB_USER/$CONTAINER_NAME:$ATG"
-		sh "docker run -d --rm -p $HTTP_PORT:$HTTP_PORT --name $CONTAINER_NAME $DOCKER_HUB_USER/$CONTAINER_NAME:$ATG"
+                sh "docker rm $DOCKER_HUB_USER/$CONTAINER_NAME -f"
+		sh "docker pull $DOCKER_HUB_USER/$CONTAINER_NAME:$TAG"
+		sh "docker run -d --rm -p $HTTP_PORT:$HTTP_PORT --name $CONTAINER_NAME $DOCKER_HUB_USER/$CONTAINER_NAME:$TAG"
 		echo "Application started on port: ${HTTP_PORT} (http)"
             }
         }
