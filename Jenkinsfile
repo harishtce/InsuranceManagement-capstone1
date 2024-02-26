@@ -50,7 +50,6 @@ pipeline {
 		sh "docker pull $DOCKER_HUB_USER/$CONTAINER_NAME:$ATG"
 		sh "docker run -d --rm -p $HTTP_PORT:$HTTP_PORT --name $CONTAINER_NAME $DOCKER_HUB_USER/$CONTAINER_NAME:$ATG"
 		echo "Application started on port: ${HTTP_PORT} (http)"
-		}
             }
         }
     }
