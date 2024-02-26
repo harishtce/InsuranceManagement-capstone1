@@ -37,7 +37,7 @@ pipeline {
 	stage('Publishing Image to Docker Hub') {
             steps {
                 echo 'Pushing the docker image to DockerHub'
-        	withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
+        	withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'dockerUser', passwordVariable: 'dockerPassword')]) {
 			sh "docker login -u $dockerUser -p $dockerPassword"
 			sh "docker push $dockerUser/$CONTAINER_NAME:$TAG"
 			echo "Image push complete"
